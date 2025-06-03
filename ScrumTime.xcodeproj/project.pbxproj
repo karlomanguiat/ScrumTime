@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		BC5C06C52DEEAD4F001BC06A /* ThemeKit in Frameworks */ = {isa = PBXBuildFile; productRef = BC5C06C42DEEAD4F001BC06A /* ThemeKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		BC5C06B12DEEA951001BC06A /* ScrumTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScrumTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC5C06C52DEEAD4F001BC06A /* ThemeKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = ScrumTime;
 			packageProductDependencies = (
+				BC5C06C42DEEAD4F001BC06A /* ThemeKit */,
 			);
 			productName = ScrumTime;
 			productReference = BC5C06B12DEEA951001BC06A /* ScrumTime.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = BC5C06A82DEEA951001BC06A;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				BC5C06C32DEEAD4F001BC06A /* XCLocalSwiftPackageReference "ThemeKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = BC5C06B22DEEA951001BC06A /* Products */;
 			projectDirPath = "";
@@ -320,6 +329,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		BC5C06C32DEEAD4F001BC06A /* XCLocalSwiftPackageReference "ThemeKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ThemeKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BC5C06C42DEEAD4F001BC06A /* ThemeKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ThemeKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BC5C06A92DEEA951001BC06A /* Project object */;
 }
