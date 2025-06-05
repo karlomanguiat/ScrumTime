@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct ScrumsDetailView: View {
-    let scrum: DailyScrum
+    @Binding var scrum: DailyScrum
     
+    @State private var editingScrum = DailyScrum.emptyScrum
     @State private var isPresentingEditView = false
     
     var body: some View {
         List {
             Section(header: Text("Meeting Info")) {
-                NavigationLink(destination: MeetingView()) {
+                NavigationLink(destination: MeetingView(scrum: $scrum)) {
                     Label("Start Meeting", systemImage: "timer")
                         .font(.headline)
                         .foregroundColor(.accentColor)
@@ -30,10 +31,10 @@ struct ScrumsDetailView: View {
                     Label("Theme", systemImage: "paintpalette")
                     Spacer()
                     Text(scrum.theme.name)
-                        .padding(4)
+                        .padding(5)
                         .foregroundColor(scrum.theme.accentColor)
                         .background(scrum.theme.mainColor)
-                        .cornerRadius(8)
+                        .clipShape(Capsule())
                 }
                 .accessibilityElement(children: .combine)
             }
@@ -43,31 +44,44 @@ struct ScrumsDetailView: View {
                     Label(attendee.name, systemImage: "person")
                 }
             }
+            
+            Section(header: Text("History")) {
+                if scrum.history.isEmpty {
+                    Label("No history yet.", systemImage: "calendar.badge.exclamationmark")
+                        .foregroundColor(.secondary)
+                }
+                
+                ForEach(scrum.history) { history in
+                    HStack {
+                        Image(systemName: "calendar")
+                        Text(history.date, style: .date)
+                    }
+                }
+            }
         }
         .navigationTitle(scrum.title)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             Button("Edit") {
                 isPresentingEditView = true
+                editingScrum = scrum
             }
         }
         .sheet(isPresented: $isPresentingEditView) {
             NavigationStack {
-                ScrumsDetailEditView()
-                    .navigationTitle(scrum.title)
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .cancellationAction) {
-                            Button("Cancel"){
-                                isPresentingEditView = false
-                            }
-                        }
-                    }
+                ScrumsDetailEditView(scrum: $editingScrum, saveEdits: { dailyScrum in
+                    scrum = editingScrum
+                })
+                .navigationTitle(scrum.title)
             }
         }
     }
 }
 
 #Preview {
-    ScrumsDetailView(scrum: DailyScrum.sampleData[1])
+    @Previewable @State var scrum = DailyScrum.sampleData[0]
+    
+    NavigationStack {
+        ScrumsDetailView(scrum: $scrum)
+    }
 }

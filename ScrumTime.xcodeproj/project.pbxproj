@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC2D90032DF01E8300B1A79C /* TimerKit in Frameworks */ = {isa = PBXBuildFile; productRef = BC2D90022DF01E8300B1A79C /* TimerKit */; };
 		BC5C06C52DEEAD4F001BC06A /* ThemeKit in Frameworks */ = {isa = PBXBuildFile; productRef = BC5C06C42DEEAD4F001BC06A /* ThemeKit */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC5C06C52DEEAD4F001BC06A /* ThemeKit in Frameworks */,
+				BC2D90032DF01E8300B1A79C /* TimerKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +73,7 @@
 			name = ScrumTime;
 			packageProductDependencies = (
 				BC5C06C42DEEAD4F001BC06A /* ThemeKit */,
+				BC2D90022DF01E8300B1A79C /* TimerKit */,
 			);
 			productName = ScrumTime;
 			productReference = BC5C06B12DEEA951001BC06A /* ScrumTime.app */;
@@ -102,6 +105,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				BC5C06C32DEEAD4F001BC06A /* XCLocalSwiftPackageReference "ThemeKit" */,
+				BC2D90012DF01E8300B1A79C /* XCLocalSwiftPackageReference "TimerKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = BC5C06B22DEEA951001BC06A /* Products */;
@@ -331,6 +335,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
+		BC2D90012DF01E8300B1A79C /* XCLocalSwiftPackageReference "TimerKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = TimerKit;
+		};
 		BC5C06C32DEEAD4F001BC06A /* XCLocalSwiftPackageReference "ThemeKit" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ThemeKit;
@@ -338,6 +346,10 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BC2D90022DF01E8300B1A79C /* TimerKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TimerKit;
+		};
 		BC5C06C42DEEAD4F001BC06A /* ThemeKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ThemeKit;

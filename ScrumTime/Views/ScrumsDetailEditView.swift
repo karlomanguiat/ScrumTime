@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct ScrumsDetailEditView: View {
-    @State private var scrum = DailyScrum.emptyScrum
+    @Binding var scrum: DailyScrum
+    let saveEdits: (DailyScrum) -> Void
+    
     @State private var attendeeName: String = ""
+    @Environment(\.dismiss) private var dismiss
+
     
     var body: some View {
         Form {
@@ -20,10 +24,13 @@ struct ScrumsDetailEditView: View {
                         Text("Length")
                     }
                     .accessibilityValue("\(scrum.lengthInMinutes) minutes")
+                    
                     Spacer()
+                    
                     Text("\(scrum.lengthInMinutes) min")
                         .accessibilityHidden(true)
                 }
+                ThemePicker(selection: $scrum.theme)
             }
             Section(header: Text("Members")) {
                 ForEach(scrum.attendees) { attendee in
@@ -32,6 +39,7 @@ struct ScrumsDetailEditView: View {
                 .onDelete { indices in
                     scrum.attendees.remove(atOffsets: indices)
                 }
+                
                 HStack {
                     TextField("New Attendee", text: $attendeeName)
                     
@@ -49,9 +57,23 @@ struct ScrumsDetailEditView: View {
                 }
             }
         }
+        .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Cancel") {
+                    dismiss()
+                }
+            }
+            ToolbarItem(placement: .confirmationAction) {
+                Button("Done") {
+                    saveEdits(scrum)
+                    dismiss()
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    ScrumsDetailEditView()
+    @Previewable @State var scrum = DailyScrum.sampleData[0]
+    ScrumsDetailEditView(scrum: $scrum, saveEdits: { _ in })
 }
